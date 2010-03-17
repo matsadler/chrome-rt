@@ -1,10 +1,11 @@
-var url = localStorage["RTURL"]
+var requester = function () {
+	requestFeed(localStorage["RTURL"]);
+	var interval = parseInt(localStorage["RTRefreshDelay"]) * 60 * 1000;
+	setTimeout(requester, interval);
+}
+requester();
 
-requestFeed();
-var interval = parseInt(localStorage["RTRefreshDelay"]) * 60 * 1000;
-setInterval(requestFeed, interval);
-
-function requestFeed() {
+function requestFeed(url) {
 	request = new XMLHttpRequest();
 	request.onload = handleResponse;
 	request.onerror = handleError;
