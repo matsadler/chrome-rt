@@ -1,0 +1,9 @@
+body {
+	font-family: sans-serif;
+}
+input#RTURL {
+	width: 100%;
+}
+label {
+	display: block;
+}

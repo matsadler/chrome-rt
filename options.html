@@ -2,48 +2,8 @@
 <html>
 <head>
 	<title>RT Extension Options</title>
-	<style>
-	body {
-		font-family: sans-serif;
-	}
-	input#RTURL {
-		width: 100%;
-	}
-	label {
-		display: block;
-	}
-	</style>
-	
-	<script>
-	// Saves options to localStorage.
-	function save_options() {
-		var url = document.getElementById("RTURL").value;
-		localStorage["RTURL"] = url.replace(/\.html/, ".rdf");
-		
-		var interval = document.getElementById("RTRefreshDelay").value;
-		localStorage["RTRefreshDelay"] = interval;
-		
-		// Update status to let user know options were saved.
-		var status = document.getElementById("status");
-		status.innerHTML = "Options Saved.";
-		setTimeout(function() {
-		  status.innerHTML = "";
-		}, 750);
-	}
-
-	// Restores select box state to saved value from localStorage.
-	function restore_options() {
-		var url = localStorage["RTURL"];
-		var interval = localStorage["RTRefreshDelay"];
-		
-		if (url) {
-			document.getElementById("RTURL").value = url;
-		}
-		if (interval) {
-			document.getElementById("RTRefreshDelay").value = interval;
-		}
-	}
-	</script>
+	<link href="style/options.css" rel="stylesheet">
+	<script src="script/options.js"></script>
 </head>
 
 <body onload="restore_options()">

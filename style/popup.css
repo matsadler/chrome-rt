@@ -1,0 +1,101 @@
+body {
+	font-family: Verdana, sans-serif;
+	font-size: 12px;
+}
+
+#header {
+	height: 29px;
+}
+
+h1 {
+	color: #930;
+	font-size: 1.5em;
+	font-weight: bold;
+	display: block;
+	margin: 0;
+}
+
+#goTo {
+	float:right;
+	clear: both;
+}
+
+#rtContent {
+	height: 551px;
+	min-width: 450px;
+	overflow: auto;
+}
+
+#tickets {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+#tickets li:nth-child(odd) {
+	background-color: #ddd;
+}
+
+#tickets li:nth-child(even) {
+	
+}
+
+#tickets li {
+	display: block;
+	padding: 2px 5px;
+}
+
+#tickets .id {
+	float: left;
+}
+
+#tickets .title {
+	display: block;
+	margin-left: 75px;
+	margin-bottom: 4px;
+}
+
+#tickets .creator {
+	font-size: 10px;
+	margin-left: 75px;
+}
+
+#tickets a {
+	color: #069;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+#tickets a:hover {
+	text-decoration: underline;
+}
+
+#tickets a:visited {
+	color: #551a8b;
+}
+
+#tickets a:active {
+	color: #f00;
+}
+
+form input {
+	border: 1px solid;
+	padding: 2px 3px;
+	margin-right: 0px;
+	margin-left: 2px;
+}
+
+form input[type=submit] {
+	border: 3px double #069;
+	border-top-color: #08c;
+	border-left-color: #08c;
+	background: white;
+	font-weight: bold;
+	padding: 0px 2px;
+}
+
+form input[type=submit]:active {
+	border: 3px double #08c;
+	border-top-color: #069;
+	border-left-color: #069;
+}
