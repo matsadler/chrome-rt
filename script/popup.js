@@ -1,5 +1,3 @@
-var url = "https://ticket.uk.clara.net/Search/Results.rdf?Query=Queue%20%3D%20'concord'%20AND%20(Status%20%3D%20'open'%20OR%20Status%20%3D%20'new'%20OR%20Status%20%3D%20'stalled')"
-
 document.addEventListener("DOMContentLoaded", function () {
 	var form = document.querySelector("#goToForm"),
 		input = document.querySelector("#goToID"),
@@ -9,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		i, child;
 	
 	form.addEventListener("submit", function () {
-		window.open("https://ticket.uk.clara.net//Ticket/Display.html?id=" + input.value)
+		window.open(localStorage["RTOpenTicketURL"] + input.value)
 	});
 	
 	title.innerHTML = "Found " + items.length + " tickets";
