@@ -28,7 +28,7 @@ function parseResponse(response) {
 		i;
 	
 	for (i = 0; i < items.length; i++) {
-		parsedItems.push(Item.fromXML(items[0]));
+		parsedItems.push(Item.fromXML(items[i]));
 	}
 	
 	parsedItems = parsedItems.sort(function (a, b) {
