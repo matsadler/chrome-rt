@@ -24,20 +24,10 @@ function handleError() {
 function parseResponse(response) {
 	var items = response.getElementsByTagName("item"),
 		parsedItems = [],
-		i, item, creatorText;
+		i;
 	
 	for (i = 0; i < items.length; i++) {
-		item = {};
-		item.title = items[i].querySelector("title").textContent;
-		item.url = items[i].querySelector("link").textContent;
-		item.id = item.url.match(/id=(\d+)/)[1];
-		creatorText = items[i].querySelector("creator").textContent;
-		if (creatorText.match(/".+"/)) {
-			item.creator = creatorText.match(/"(.+)"/)[1];
-		} else if (creatorText.match(/<.+>/)) {
-			item.creator = creatorText.match(/<(.+)>/)[1];
-		}
-		parsedItems.push(item);
+		parsedItems.push(Item.fromXML(items[0]));
 	}
 	
 	parsedItems = parsedItems.sort(function (a, b) {
@@ -46,3 +36,42 @@ function parseResponse(response) {
 	
 	return parsedItems;
 }
+
+function Item(id, title, url, text, creatorName, creatorEmail) {
+	this.id = id;
+	this.title = title;
+	this.url = url;
+	this.text = text;
+	this.creatorName = creatorName;
+	this.creatorEmail = creatorEmail;
+}
+
+Item.fromXML = function(element) {
+	var item = new Item();
+	
+	item.title = element.querySelector("title").textContent;
+	item.url = element.querySelector("link").textContent;
+	item.id = item.url.match(/id=(\d+)/)[1];
+	item.creator = element.querySelector("creator").textContent;
+	
+	return item;
+};
+
+Item.prototype.__defineGetter__("creator", function () {
+	return this.creatorName || this.creatorEmail;
+});
+
+Item.prototype.__defineSetter__("creator", function (value) {
+	if (value.match(/".+"/)) {
+		this.creatorName = value.match(/"(.+)"/)[1];
+	}
+	if (value.match(/<.+>/)) {
+		this.creatorEmail = value.match(/<(.+)>/)[1];
+	}
+	
+	if (!this.creatorName) {
+		this.creatorName = value;
+	}
+	
+	return this.creatorName || this.creatorEmail;
+});
