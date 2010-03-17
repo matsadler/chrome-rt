@@ -76,3 +76,12 @@ Item.prototype.__defineSetter__("creator", function (value) {
 	
 	return this.creatorName || this.creatorEmail;
 });
+
+Item.prototype.toHTML = function () {
+	var HTMLString = "";
+	
+	HTMLString += "<a class=\"id\" href=\"" + this.url + "\" target=\"_blank\">" + this.id + "</a>\n";
+	HTMLString += "<a class=\"title\" href=\"" + this.url + "\" target=\"_blank\">" + this.title + "</a>\n";
+	HTMLString += "<span class=\"creator\">" + this.creator + "</span>";
+	return HTMLString;
+}

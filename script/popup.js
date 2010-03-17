@@ -13,16 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	title.innerHTML = "Found " + items.length + " tickets";
 	for (i = 0; i < items.length; i++) {
 		child = document.createElement("li");
-		child.innerHTML = itemToHTML(items[i]);
+		child.innerHTML = items[i].toHTML();
 		list.appendChild(child);
 	}
 });
-
-function itemToHTML(item) {
-	var HTMLString = "";
-	
-	HTMLString += "<a class=\"id\" href=\"" + item.url + "\" target=\"_blank\">" + item.id + "</a>\n";
-	HTMLString += "<a class=\"title\" href=\"" + item.url + "\" target=\"_blank\">" + item.title + "</a>\n";
-	HTMLString += "<span class=\"creator\">" + item.creator + "</span>";
-	return HTMLString;
-}
