@@ -21,7 +21,7 @@ h1 {
 }
 
 #rtContent {
-	height: 551px;
+	max-height: 551px;
 	min-width: 450px;
 	overflow: auto;
 }
