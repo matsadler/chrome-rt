@@ -1,7 +1,9 @@
 var requester = function () {
 	requestFeed(localStorage["RTURL"]);
-	var interval = parseInt(localStorage["RTRefreshDelay"]) * 60 * 1000;
-	setTimeout(requester, interval);
+	if (localStorage["RTRefreshDelay"]) {
+		var interval = parseInt(localStorage["RTRefreshDelay"]) * 60 * 1000;
+		setTimeout(requester, interval);
+	}
 }
 requester();
 
